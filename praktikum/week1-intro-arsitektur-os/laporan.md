@@ -23,26 +23,36 @@ Tuliskan tujuan praktikum minggu ini.
 
 ## Dasar Teori
 Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
->
+> 1. Sistem Operasi
+Perangkat lunak yang mengelola hardware dan menyediakan layanan untuk aplikasi.
+2. Arsitektur Sistem Operasi
+Monolithic Kernel: Semua fungsi OS berjalan dalam satu ruang kernel (cepat tapi kurang stabil).
+Microkernel: Kernel hanya fungsi dasar, layanan lain di user space (lebih stabil tapi lebih lambat).
+Hybrid Kernel: Kombinasi keduanya, modul bisa ditambah atau dilepas.
+3. Kernel
+Bagian inti OS yang mengatur proses, memori, perangkat I/O, dan sistem file.
+4. Mode Kernel dan User
+Kernel mode: Hak akses penuh, jalankan tugas inti OS.
+User mode: Hak terbatas, untuk aplikasi agar sistem aman dan stabil.
 ---
 
 ## Langkah Praktikum
 1. Setup Environment Pastikan Linux (Ubuntu/WSL) sudah terinstal. Pastikan Git sudah dikonfigurasi dengan benar dengan perintah yang dijalankan:
-   git config-global user.name "Nama Anda
-   git config --global user.email "email@contoh.com
+   `git config-global user.name "Nama Anda`
+   `git config --global user.email "email@contoh.com`
    Diskusi Konsep Baca materi pengantar tentang komponen OS Identifikasi komponen yang ada pada Linux/Windows/Android. Eksperimen Dasar Jalankan perintah berikut di terminal
-   uname -a
-   whoami
-   Ismod | head
-   dmesg | head
+   `uname -a`
+   `whoami`
+   `Ismod | head`
+   `dmesg | head`
    Catat dan analisis modul kernel yang tampil. Membuat Diagram Arsitektur Buat diagram hubungan antara User-System Call-Kernel-Hardware. Gunakan draw.io atau Mermaid. Simpan hasilnya de praktikum/week 1-intro-arsitektur
    os/screenshots/diagram os.png Penulisan Laporan Tuliskan hasil pengamatan, analisis, dan kesimpulan ke dalam laporan.md. Tambahkan screenshot hasil terminal ke folder screenshots/ Commit & Push git add git commit
    "Minggu 1-Arsitektur Sistem Operasi dan Kernel" git push origin main
    
 3. Perintah yang dijalankan.
-uname -a
-ilmod | head
-dmesg | head 
+`uname -a`
+`lsmod | head`
+`dmesg | head`
 4. File dan kode yang dibuat.  
 5. Commit message yang digunakan.
 
@@ -65,11 +75,11 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Perintah uname -a menampilkan veri kernel dan pld form anda yang menunjukan bahwa ini adalah sistem 64-bit yang berjalan dalam WSL2.
-  Perintah whoami menunjukkan bahwa anda saat ini login sebagai upb
-  Perintah lsmod | head menampilkan daftar modul kernel Linux yang aktif beserta informasi penting yaitu nama modul, ukuran modul di memori, dan berapa banyak modul atau proses lain yang menggunakan modul tersebut.
+- Perintah `uname -a` menampilkan veri kernel dan pld form anda yang menunjukan bahwa ini adalah sistem 64-bit yang berjalan dalam WSL2.
+  Perintah `whoami` menunjukkan bahwa anda saat ini login sebagai upb
+  Perintah `lsmod | head` menampilkan daftar modul kernel Linux yang aktif beserta informasi penting yaitu nama modul, ukuran modul di memori, dan berapa banyak modul atau proses lain yang menggunakan modul tersebut.
   Informasi ini membantu mengetahui modul apa saja yang berjalan, berapa besar memori yang dipakai, serta memastikan modul tidak dihapus saat masih digunakan oleh sistem.
-  Perintah dmesg | head, untuk melihat ringkasan awal dari log kernel
+  Perintah `dmesg | head`, untuk melihat ringkasan awal dari log kernel
 - Hubungan hasil dengan teori (fungsi kernel, system call, arsitektur OS) yaitu :
   Dengan adanya arsitektur OS, Menunjukkan kermel Linux berjalan di atas Windows (arsitektur hybrid)
 - Perbedaan hasil di lingkungan OS berbeda Sumut vs Windows yaitu WSL2 (Linux di atas Windows) Cocok untuk pengembangan scripting dan testing Linux tools di Windows Tidak cocok untuk operasi kernel-level atau akses
@@ -79,7 +89,11 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ## Kesimpulan
 Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+1. Perintah `uname -a` dan whoami menunjukkan bahwa sistem yang digunakan adalah Linux 64-bit yang berjalan di lingkungan WSL2 dengan akses user upb, menandakan penggunaan Linux virtual di atas Windows.
 
+2. Deteksi modul kernel `lsmod | head`dan log awal kernel `dmesg | head` mengonfirmasi fungsi kernel dalam mendeteksi perangkat keras (CPU Intel dan AMD) dan memulai sistem menggunakan system call untuk konfigurasi awal, sesuai dengan teori anitektur dan fungsi kernel
+
+3. Perbedaan lingkungan OS terlihat dan WSL2 yang cocok untuk pengembangan dan pengujian Linus di Windrowy dengan ketentuan akoes hardware langsung, sedangkan Linux native lebih optimal untuk penggunaan penuh seperti server dan pengelolaan
 ---
 ## Tugas
 Ringkasan Arsitektur Kernel Sistem Operasi
@@ -101,20 +115,26 @@ Secara umumnya, trend ke arah hybrid kernel (misalnya, pada macOS XNU) menunjukk
 3. Manajemen Memori (Memory Management):
    Mengelola penggunaan memori utama (RAM) oleh berbagai proses, termasuk alokasi, de-alokasi, dan perlindungan antar proses.
 5. Manajemen Perangkat I/O (Input/Output):
-   Mengatur komun2.
+   Mengatur interaksi antara perangkat keras input/output dan sistem, termasuk driver, buffer dan komunikasi dengan perngkat eksternal
 2. Jelaskan perbedaan antara kernel mode dan user mode.
-
-   **Jawaban: [Pertanyaan**  
-ikasi antara sistem dan perangkat keras (seperti keyboard, printer, disk), serta menyediakan antarmuka agar perangkat I/O dapat digunakan oleh program.
-3. [Pertanyaan 3]  
-   **Jawaban:**  
+   Jawaban : Kernel mode adalah mode dimana OS memiliki kontrol penuh atas sistem, sedangkan user mode adalah mode terbatas dimana
+   aplikasi berjalan agar tidak langsung memengaruhi sistem inti.
+3. Sebutkan contoh OS dengan arsitektur monolithic dan microkernel.
+   Jawaban : Monolithic Kernel contohnya: Linux, MS-DOS, Unix Tradisional
+   Ciri: Semua layanan OS (driver, file system, dll.) berjalan dalam satu ruang kernel. Lebih cepat, tetapi lebih rentan terhadap
+   kerusakan sistem karena semuanya terintegrasi.
+   Microkernel Contohnya: Minix, QNX, L4, macOS
+   Ciri: Hanya fungsi inti OS (seperti komunikasi antar proses dan manajemen memori) berada di kernel, layanan lainnya dijalankan di user
+   space. Lebih stabil dan modular, tetapi bisa sedikit lebih lambat. 
 
 ---
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+- Apa bagian yang paling menantang minggu ini?
+  Bagian yang paling menantang pada minggu ini adalah pemecahan masalah terkait praktikum yang diberikan dimatkul operasi sistem
+- Bagaimana cara Anda mengatasinya?
+  Cara saya mengatasinya yaitu dengan sharing kepada teman dan mencari referensi diberbagai website terkait
 
 ---
 
