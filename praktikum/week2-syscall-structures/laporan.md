@@ -103,6 +103,7 @@ Sertakan screenshot hasil percobaan atau diagram:
 ![alt text](<screenshots/eksperimen1_strace ls3.png>)
 ![alt text](<screenshots/eksperimen2_rizzca.png>)
 ![alt text](<screenshots/eksperimen3_rizzca.png>)
+![alt text](<screenshots/Diagram arsitektur system call_rizzca.png>)
 ---
 
 ## Analisis
@@ -112,63 +113,63 @@ Sertakan screenshot hasil percobaan atau diagram:
   strace ls
 ```
 |System Call                    | Fungsi	Tujuan/Deskripsi	                 |Hasil/Status	      |Keterangan
-|-------------------------------|--------------------------------------------|--------------------|--------------------------------------|
-|execve()	                      |Menjalankan program ls	                     |Berhasil (= 0)	     |Memulai proses ls                    |
-|brk()	                        |Mengatur batas heap memori	                 |Alamat dikembalikan	 |Digunakan untuk alokasi memori dinami|
-|mmap()	                        |Mapping memori untuk program/lib	           |Alamat dikembalikan	 |Untuk stack, library, heap, dll      |
-|access("/etc/ld.so.preload")  |Mengecek preload library           	         |Gagal (ENOENT)	     |File tidak ada, normal               |
-|openat("/etc/ld.so.cache")	    |Membuka cache loader library	               |berhasil	           |Mempercepat pencarian lib            |
-|fstat()	                      |Mendapatkan info file descriptor	           |Berhasil	           |Digunakan setelah openat()           |
-|read()	                        |Membaca isi file / data	                   |Berhasil	           |Digunakan untuk membaca ELF header,                                                                                                       config, dll                          |
-|close()	                      |Menutup file descriptor	                   |Berhasil	           |Standar setelah baca file
-|openat() (berulang)	          |Membuka file library (libc, libselinux, dll)|Berhasil	           |Dependency ls
-|mprotect()	                    |Proteksi memori (read/write/exec)	         |Berhasil	           |Keamanan memori library
-|arch_prctl()	                  |Setup thread-local storage	                 |Berhasil             |Pengaturan internal proses
-|set_tid_address()	            |Inisialisasi ID thread	                     |Berhasil	           |Untuk thread manajemen
-|set_robust_list()	            |Registrasi struktur untuk thread robust	   |Berhasil	           |Untuk manajemen thread yang aman
-|rseq()	                        |Setup struktur untuk optimisasi CPU	       |Berhasil	           |Digunakan oleh glibc
-|prlimit64()	                  |Cek batas stack	                           |Berhasil	           |Limitasi resource proses
-|munmap()	                      |Melepas mapping memori	                     |Berhasil	           |Pembersihan memori
-|statfs("/selinux")	            |Cek keberadaan SELinux	                     |ENOENT	             |SELinux tidak aktif di sistem
-|getrandom()	                  |Ambil data acak dari kernel	               |Berhasil             |(8 byte)	Untuk seed atau ASLR
-|access("/etc/selinux/config")	|Cek config SELinux	                         |ENOENT	             |Konfigurasi tidak ditemukan
-|openat("/proc/filesystems")	  |Cek sistem file yang tersedia	             |Berhasil	           |Digunakan oleh ls secara tidak                                                                                                           langsung
-|futex()	                      |Sinkronisasi thread	                       |Berhasil	           |Tidak ada thread dibangunkan
-|readlink("/proc/self/exe")	    |Dapatkan path executable saat ini	         |Berhasil	           |Internal dari glibc
-|openat(".", ...)	              |Membuka direktori saat ini	                 |Berhasil	           |ls akan membaca isi direktori
-|getdents64()	                  |Membaca isi direktori	                     |Berhasil	           |Mengambil daftar file untuk                                                                                                               ditampilkan
-|write()	                      |Menulis hasil ke stdout	                   |Berhasil	           |Output ls ke layar
-|exit_group()	                  |Mengakhiri proses	                         |Berhasil	           |Proses ls selesai
+|-------------------------------|--------------------------------------------|-------------------- |--------------------------------------|
+|execve()	                    |Menjalankan program ls	                    |Berhasil (= 0)	      |Memulai proses ls                   
+|brk()	                       |Mengatur batas heap memori	                 |Alamat dikembalikan	|Digunakan untuk alokasi memori dinami|
+|mmap()	                       |Mapping memori untuk program/lib	           |Alamat dikembalikan	|Untuk stack, library, heap, dll      |
+|access("/etc/ld.so.preload")   |Mengecek preload library           	        |Gagal (ENOENT)	      |File tidak ada, normal               |
+|openat("/etc/ld.so.cache")	  |Membuka cache loader library	              |berhasil	            |Mempercepat pencarian lib            |
+|fstat()	                       |Mendapatkan info file descriptor	           |Berhasil	            |Digunakan setelah openat()           |
+|read()	                       |Membaca isi file / data	                    |Berhasil	            |Digunakan untuk membaca ELF header,                                                                                                       config, dll                          |
+|close()	                       |Menutup file descriptor	                    |Berhasil	            |Standar setelah baca file
+|openat() (berulang)	           |Membuka file library (libc, libselinux, dll)|Berhasil	            |Dependency ls
+|mprotect()	                    |Proteksi memori (read/write/exec)	        |Berhasil	            |Keamanan memori library
+|arch_prctl()	                 |Setup thread-local storage	                 |Berhasil             |Pengaturan internal proses
+|set_tid_address()	           |Inisialisasi ID thread	                    |Berhasil	            |Untuk thread manajemen
+|set_robust_list()	           |Registrasi struktur untuk thread robust	  |Berhasil	            |Untuk manajemen thread yang aman
+|rseq()	                       |Setup struktur untuk optimisasi CPU	        |Berhasil	            |Digunakan oleh glibc
+|prlimit64()	                 |Cek batas stack	                          |Berhasil	            |Limitasi resource proses
+|munmap()	                    |Melepas mapping memori	                    |Berhasil	            |Pembersihan memori
+|statfs("/selinux")	           |Cek keberadaan SELinux	                    |ENOENT	            |SELinux tidak aktif di sistem
+|getrandom()	                 |Ambil data acak dari kernel	              |Berhasil             |(8 byte)	Untuk seed atau ASLR
+|access("/etc/selinux/config")  |Cek config SELinux	                       |ENOENT	            |Konfigurasi tidak ditemukan
+|openat("/proc/filesystems")	  |Cek sistem file yang tersedia	              |Berhasil	            |Digunakan oleh ls secara tidak                                                                                                           langsung
+|futex()	                       |Sinkronisasi thread	                       |Berhasil	            |Tidak ada thread dibangunkan
+|readlink("/proc/self/exe")	  |Dapatkan path executable saat ini	        |Berhasil	            |Internal dari glibc
+|openat(".", ...)	              |Membuka direktori saat ini	                 |Berhasil	            |ls akan membaca isi direktori
+|getdents64()	                 |Membaca isi direktori	                    |Berhasil	            |Mengambil daftar file untuk                                                                                                               ditampilkan
+|write()	                       |Menulis hasil ke stdout	                     |Berhasil	          |Output ls ke layar
+|exit_group()	                 |Mengakhiri proses	                           |Berhasil	          |Proses ls selesai
 
 
 ```bash
 strace -e trace=open,read,write,close cat /etc/passwd
 ```
 
-| System Call	 |Fungsi	Argumen                       | File Terkait	                 |Hasil	          |Keterangan
+| System Call	 |Fungsi	Argumen                       | File Terkait	                  |Hasil	        |Keterangan
 |--------------|--------------------------------------|--------------------------------|----------------|-------------------------------|
-|open()	       |Membuka file library atau konfigurasi	|(Beragam, default lib & locale  |Berhasil (= 3)	|File deskriptor 3 digunakan
-|read()	       |Membaca data binary                   |(mis. ELF)	fd = 3	             |= 832 byte	    |Membaca metadata binary
-|close()	     |Menutup file setelah dibaca	          |fd = 3	                         |= 0	            |Penutupan file ELF / |lib	|read()	       |Membaca file locale alias	            |fd = 3	                         |= 2996 byte	    |Locale config file
-|read()	       |Membaca ulang file yang sama	        |fd = 3	                         |= 0	            |Menandakan EOF	
-|close()	     |Menutup file	                        |fd = 3	                         |= 0	            |File locale alias
-|close()	     |Penutupan descriptor library lain	    |fd = 3	                         |= 0	            |File lib/locale ditutup
-|read()	       |Membaca isi /etc/passwd	              |fd = 3	                         |= 1444 byte	    |Isi file berhasil dibaca
-|write()	     |Menampilkan isi ke stdout	            |fd = 1 (stdout)	               | = 1444 byte	  |Isi /etc/passwd ditampilkan
-|close()	     |Menutup file /etc/passwd	            |fd = 3	                         |= 0	            |Akhir operasi pembacaan
+|open()	      |Membuka file library atau konfigurasi	|(Beragam, default lib & locale  |Berhasil (= 3)  |File deskriptor 3 digunakan
+|read()	      |Membaca data binary                   |(mis. ELF)	fd = 3	            |= 832 byte	     |Membaca metadata binary
+|close()	      |Menutup file setelah dibaca	         |fd = 3	                        |= 0	           |Penutupan file ELF / |lib	|read()	      |Membaca file locale alias	            |fd = 3	                        |= 2996 byte	  |Locale config file
+|read()	      |Membaca ulang file yang sama	         |fd = 3	                        |= 0	           |Menandakan EOF	
+|close()	      |Menutup file	                        |fd = 3	                        |= 0	           |File locale alias
+|close()	      |Penutupan descriptor library lain	   |fd = 3	                        |= 0	           |File lib/locale ditutup
+|read()	      |Membaca isi /etc/passwd	            |fd = 3	                        |= 1444 byte	  |Isi file berhasil dibaca
+|write()	      |Menampilkan isi ke stdout	            |fd = 1 (stdout)	               | = 1444 byte	  |Isi /etc/passwd ditampilkan
+|close()	      |Menutup file /etc/passwd	            |fd = 3	                        |= 0	           |Akhir operasi pembacaan
 
 ```bash
 dmesg | tail -n 10
 ```
 
 Timestamp (detik)	  |Komponen	        |Pesan Kernel	                               |Keterangan
-|-------------------|-----------------|--------------------------------------------|-----------------------------------------|
-[ 8.534065 ]	      |FS-Cache	        |N-key=[10] '34323934393338313434	           |Pesan internal dari sistem cache file
-[ 49.195291 ]	      |Hyper-V Balloon	|Max. dynamic memory size: 3184 MB	         |Batas maksimum memori dinamis (WSL2)
-[ 65.856038 ]	      |WSL2	            |Performing memory compaction                |Proses penghematan memori oleh WSL2
-[ 186.885772 ]	    |WSL2	            |Performing memory compaction	               |Berulang, menunjukkan manajemen memori
-[ 520.231929 ]	    |TCP              |Driver	Driver has suspect GRO implementation|Driver eth0 mungkin tidak optimal
-[ 547.895374 ]	    |WSL2	            |Performing memory compaction	               |Kompaksi memori kembali terjadi
+|-------------------|-----------------|----------------------------------------------|-----------------------------------------|
+[ 8.534065 ]	     |FS-Cache	        |N-key=[10] '34323934393338313434	             |Pesan internal dari sistem cache file
+[ 49.195291 ]	     |Hyper-V Balloon  |Max. dynamic memory size: 3184 MB	          |Batas maksimum memori dinamis (WSL2)
+[ 65.856038 ]	     |WSL2	           |Performing memory compaction                  |Proses penghematan memori oleh WSL2
+[ 186.885772 ]	     |WSL2	           |Performing memory compaction	                |Berulang, menunjukkan manajemen memori
+[ 520.231929 ]	     |TCP              |Driver	Driver has suspect GRO implementation|Driver eth0 mungkin tidak optimal
+[ 547.895374 ]	     |WSL2	           |Performing memory compaction	                |Kompaksi memori kembali terjadi
 
 > Seluruh percobaan menggunakan strace terhadap perintah ls dan cat /etc/passwd menunjukkan bahwa eksekusi program berjalan normal melalui serangkaian system call inti seperti execve, open, read, write, dan close tanpa error, serta hasil dmesg mengonfirmasi tidak ada gangguan kernel yang signifikan selain aktivitas rutin WSL2 terkait manajemen memori dan peringatan driver jaringan.
 
@@ -244,7 +245,7 @@ Tuliskan secara singkat:
 - Apa bagian yang paling menantang minggu ini?
   menganalisis hasil dari praktikum yang telah dilakukan mengenai system call 
 - Bagaimana cara Anda mengatasinya?
-  mecari referensi dari web yang disediakan di github dan refensi web lainnya di google 
+  mencari referensi dari web yang disediakan di github dan refensi web lainnya di google 
 
 ---
 
