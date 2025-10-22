@@ -98,8 +98,11 @@ strace -e trace=open,read,write,close cat /etc/passwd
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
-
+![alt text](<screenshots/eksperimen1_strace ls1.png>)
+![alt text](<screenshots/eksperimen1_strace ls2.png>)
+![alt text](<screenshots/eksperimen1_strace ls3.png>)
+![alt text](<screenshots/eksperimen2_rizzca.png>)
+![alt text](<screenshots/eksperimen3_rizzca.png>)
 ---
 
 ## Analisis
