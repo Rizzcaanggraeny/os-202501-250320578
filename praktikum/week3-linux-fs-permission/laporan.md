@@ -95,7 +95,9 @@ Tuliskan potongan kode atau perintah utama:
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![alt text](screenshots/Praktikum_percobaan.txt1_rizzca.png)
+![alt text](screenshots/Praktikum_percobaan.txt2_rizzca.png)
+
 
 ```bash
  pwd
