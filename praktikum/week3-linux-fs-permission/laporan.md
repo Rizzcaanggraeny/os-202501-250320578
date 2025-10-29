@@ -95,7 +95,7 @@ Tuliskan potongan kode atau perintah utama:
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![alt text](screenshots/Praktikum_percobaan.txt1_rizzca.png)
+![alt text](screenshots/Praktikum_percobaan1.txt_rizzca.png)
 ![alt text](screenshots/Praktikum_percobaan.txt2_rizzca.png)
 
 
