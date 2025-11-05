@@ -121,7 +121,9 @@ Tuliskan potongan kode atau perintah utama:
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![alt text](screenshots/Top_1.png)
+![alt text](screenshots/Top_2.png)
+![alt text](screenshots/Top_3,4.png)
 
 ---
 
