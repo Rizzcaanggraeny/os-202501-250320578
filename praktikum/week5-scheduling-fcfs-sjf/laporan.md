@@ -106,7 +106,7 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/fcfs%20_%20sjf_week5.png)
 
 ---
 
