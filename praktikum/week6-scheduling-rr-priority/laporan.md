@@ -116,7 +116,7 @@ Average Turnaround Time (TAT) = Total TAT / Jumlah Proses
 ---
 
 ## Hasil Eksekusi
-![Screenshot hasil](screenshots/example.png)
+![alt text](screenshots/week6-scheduling-rr-priority.png)
 
 *Eksperimen 1 – Round Robin (RR)*
 - Gunakan *time quantum (q)* = 3.  
@@ -217,6 +217,8 @@ Simulasi eksekusi menggunakan Gantt Chart
 ---
 
 **Eksperimen 3 – Analisis Variasi Time Quantum (Opsional)**
+![alt text](screenshots/week6-scheduling-rr-priority1.png)
+
   - Ubah *quantum* menjadi 2 dan 5.  
  
 - Round Robin (RR) – Time Quantum (q = 2)
