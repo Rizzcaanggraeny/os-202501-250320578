@@ -1,6 +1,6 @@
 
 # Laporan Praktikum Minggu 7
-Topik:Sinkronisasi Proses dan Masalah Deadlock
+Topik: Sinkronisasi Proses dan Masalah Deadlock
 
 ---
 
