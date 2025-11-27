@@ -156,8 +156,12 @@ Tuliskan potongan kode atau perintah utama:
 1. Laporan tugas di file laporan.md masing-masing anggota.
 2. Screenshots pada file praktikum screenshots masing-masing anggota.
 3. Screenshoots hasil :
-   - Versi Deadlock
-![Screenshot hasil](screenshots/example.png)
+   - Eksperimen 1
+     ![alt text](<screenshots/week7_eksperimen1.jpeg>)
+     
+   - Eksperimen 2 menggunakan maximal 4 filsuf
+     ![alt text](<screenshots/week7_eksperimen2_max4filsuf.jpeg>)
+
 
 ---
 
