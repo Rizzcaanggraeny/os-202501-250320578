@@ -358,8 +358,9 @@ Ini tanda paling jelas bahwa deadlock berhasil dicegah.
 ---
 
 ## Quiz
-1. Sebutkan empat kondisi utama penyebab deeadlock! 
-   Jawaban:
+1. Sebutkan empat kondisi utama penyebab deeadlock !
+
+    Jawaban:
    Kondisi Utama terjadinya deadlock yaitu:
    - Pengecualian Bersama, Dalam kondisi ini, kita tidak dapat berbagi sumber daya di antara berbagai proses secara bersamaan. Contohnya
      yaitu, jika dua orang ingin mencetak kertas secara bersamaan, proses ini tidak dapat dilakukan. Salah satu dari mereka harus
@@ -376,6 +377,7 @@ Ini tanda paling jelas bahwa deadlock berhasil dicegah.
      menempatkan semua proses dalam keadaan menunggu.
 
 3. Mengapa sinkronisasi diperlukan dalam sistem operasi?
+
    Jawaban:
    Sinkronisasi diperlukan dalam sistem operasi karena sinkronisasi merupakan aspek penting dalam Sistem Operasi yang memastikan eksekusi
    beberapa proses bersamaan yang harmonis dan terprediksi. Sinkronisasi berfokus pada pencegahan konflik dan kondisi balapan ketika
@@ -401,8 +403,11 @@ Ini tanda paling jelas bahwa deadlock berhasil dicegah.
 ## Refleksi Diri
 Tuliskan secara singkat:
 - Apa bagian yang paling menantang minggu ini?
-  bagian menantang minggu ini adalah dengan implementasi code psucode 
+  
+  bagian menantang minggu ini adalah dengan implementasi code pseucode
+  
 - Bagaimana cara Anda mengatasinya?
+  
   saya mengatasinya dengan berdiskusi bersama team kelompok untuk menyeleesaikan masalah tersebut dan mencari rekomendasi dari beberapa
   website 
 
