@@ -147,8 +147,9 @@ if __name__ == "__main__":
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
-
+![Screenshot hasil](screenshots/Eksperimen_Hasil_simulasi_FCFS_week9_1.png)
+![Screenshot hasil](screenshots/Eksperimen_hasil_simulasi_FCFS_week9_2.png)
+![Screenshot hasil](screenshots/Eksperimen_hasil_simulasi_FCFS_week9_3.png)
 ---
 
 ## Analisis
@@ -180,6 +181,9 @@ Sertakan screenshot hasil percobaan atau diagram:
     - Mengeksekusi seluruh simulasi saat file dijalankan.
    
 - Bandingkan hasil simulasi dengan perhitungan manual.
+  ![Screenshot hasil](screenshots/Eksperimen_PerhitunganManual_FCFS.png)
+
+  
   
 |     Proses    | Burst Time | Arrival Time | Start |  Waiting | Turnaround | Finish |
 | :-----------: | :--------: | :----------: | :---: | :------: | :--------: | :----: |
@@ -189,10 +193,18 @@ Sertakan screenshot hasil percobaan atau diagram:
 |       P4      |      3     |       3      |   21  |    18    |     21     |   24   |
 | **Rata-rata** |            |              |       | **8.75** |  **14.75** |        |
 
+
  - FCFS
      - Waiting Time    : 8,75
      - Turnaround time : 14,75
+- Hasil simulasi yaang menggunakan program :
+    ![Screenshot hasil](screenshots/Eksperimen_Tabel_program_FCFS_week9.png)
 
+  
+- FCFS
+     - Waiting Time    : 8,75
+     - Turnaround time : 14,75
+  
 - Jelaskan kelebihan dan keterbatasan simulasi.
 ###  Kelebihan Simulasi
 
