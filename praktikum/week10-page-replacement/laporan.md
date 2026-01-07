@@ -181,17 +181,21 @@ print("+" + "-"*12 + "+" + "-"*14 + "+" + "-"*14 + "+")
 ## Hasil Implementasi FIFO
 Hasil berikut menunjukkan proses simulasi page replacement menggunakan algoritma FIFO dengan jumlah frame sebanyak 3.
 
+![Screenshot hasil](screenshots/Hasi_Eksekusi_FIFO.png)
+
 FIFO mengganti halaman berdasarkan urutan masuk ke memori.
 
 ## Hasil Implementasi LRU
 Berikut merupakan hasil simulasi page replacement menggunakan algoritma LRU dengan jumlah frame yang sama.
+![Screenshot hasil](screenshots/Hasil_Eksekusi_LRU.png)
+
 LRU mengganti halaman yang paling lama tidak digunakan.
 
 ---
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/Eksperimen_hasil_simulasi_FIFO_LRU.png)
 
 ---
 
