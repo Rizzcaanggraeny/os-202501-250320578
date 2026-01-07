@@ -96,6 +96,8 @@ Mahasiswa akan mengimplementasikan **program simulasi page replacement**, menjal
 
 ## Kode / Perintah
 Kode yang digunakan
+
+```bash
 reference_string = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2]
 frames = 3
 
@@ -173,6 +175,18 @@ print("+" + "-"*12 + "+" + "-"*14 + "+" + "-"*14 + "+")
 print(f"| FIFO      | {frames:^12} | {fifo_fault:^12} |")
 print(f"| LRU       | {frames:^12} | {lru_fault:^12} |")
 print("+" + "-"*12 + "+" + "-"*14 + "+" + "-"*14 + "+")
+```
+---
+
+## Hasil Implementasi FIFO
+Hasil berikut menunjukkan proses simulasi page replacement menggunakan algoritma FIFO dengan jumlah frame sebanyak 3.
+
+FIFO mengganti halaman berdasarkan urutan masuk ke memori.
+
+## Hasil Implementasi LRU
+Berikut merupakan hasil simulasi page replacement menggunakan algoritma LRU dengan jumlah frame yang sama.
+LRU mengganti halaman yang paling lama tidak digunakan.
+
 ---
 
 ## Hasil Eksekusi
@@ -212,7 +226,7 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Kesimpulan
-Praktikum ini mensimulasikan algoritma FIFO dan LRU dengan referensi string [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2] dan 3 frame memori. Hasil utama: FIFO menghasilkan 6 page fault, LRU 9 fault. Perbedaan disebabkan kriteria penggantian—FIFO berdasarkan urutan masuk (cocok pola berulang), LRU berdasarkan waktu penggunaan terakhir (lebih sensitif terhadap akses ulang). Dalam simulasi ini, FIFO lebih efisien karena fault lebih sedikit, mengurangi I/O; namun, LRU umumnya lebih efisien secara umum berkat prinsip lokalitas. Kesimpulan: Pemilihan algoritma harus disesuaikan dengan pola akses beban kerja untuk optimasi memori sistem operasi.
+Praktikum ini mensimulasikan algoritma FIFO dan LRU dengan referensi string [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2] dan 3 frame memori. Hasil utama: FIFO menghasilkan 6 page fault, LRU 9 fault. Perbedaan disebabkan kriteria penggantian FIFO berdasarkan urutan masuk (cocok pola berulang), LRU berdasarkan waktu penggunaan terakhir (lebih sensitif terhadap akses ulang). Dalam simulasi ini, FIFO lebih efisien karena fault lebih sedikit, mengurangi I/O namun, LRU umumnya lebih efisien secara umum berkat prinsip lokalitas, pemilihan algoritma harus disesuaikan dengan pola akses beban kerja untuk optimasi memori sistem operasi.
 
 ---
 
@@ -235,7 +249,7 @@ Praktikum ini mensimulasikan algoritma FIFO dan LRU dengan referensi string [7, 
 5. Mengapa LRU umumnya menghasilkan performa lebih baik dibanding FIFO?
    - **Jawaban** : **LRU lebih unggul dan lebih andal dibandingkan FIFO** karena mampu menyesuaikan diri dengan pola akses
      memori program dan meminimalkan *page fault* dalam sebagian besar kasus. Meskipun implementasi LRU lebih kompleks,
-     efisiensi yang diperoleh—terutama dalam mengurangi operasi I/O disk menjadikannya pilihan yang lebih baik untuk sistem
+     efisiensi yang diperoleh terutama dalam mengurangi operasi I/O disk menjadikannya pilihan yang lebih baik untuk sistem
      operasi modern. FIFO tetap dapat digunakan pada skenario sederhana, tetapi kurang optimal untuk beban kerja yang
      dinamis dan kompleks.
 
