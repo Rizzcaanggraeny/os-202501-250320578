@@ -85,9 +85,10 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ---
 
 ## Kode / Perintah
-```bash
+
 1. Menghitung waiting time dan turnaround time FCFS
-```
+
+```bash
 def main():
     proses_list = [
         {'id': 'P1', 'arrival': 0, 'burst': 6},
@@ -135,8 +136,11 @@ if __name__ == "__main__":
     main()
    
 ```
+
 2.  Menghitung waiting time dan turnaround time SJF
-```
+
+```bash
+
 #Menghitung waiting time dan turnaround time SJF
 def main():
     proses_list = [
@@ -200,6 +204,8 @@ Sertakan screenshot hasil percobaan atau diagram:
 ![Screenshot hasil](screenshots/Eksperimen_Hasil_simulasi_FCFS_week9_1.png)
 ![Screenshot hasil](screenshots/Eksperimen_hasil_simulasi_FCFS_week9_2.png)
 ![Screenshot hasil](screenshots/Eksperimen_hasil_simulasi_FCFS_week9_3.png)
+![Screenshot hasil](screenshots/Eksperimen_SJF_week9_1.png)
+
 ---
 
 ## Analisis
@@ -230,7 +236,8 @@ Sertakan screenshot hasil percobaan atau diagram:
 11. Program dijalankan melalui fungsi main()
     - Mengeksekusi seluruh simulasi saat file dijalankan.
    
-- Bandingkan hasil simulasi dengan perhitungan manual.
+- FCFS
+  Bandingkan hasil simulasi dengan perhitungan manual.
   ![Screenshot hasil](screenshots/Eksperimen_PerhitunganManual_FCFS.png)
 
   
@@ -251,9 +258,14 @@ Sertakan screenshot hasil percobaan atau diagram:
     ![Screenshot hasil](screenshots/Eksperimen_Tabel_program_FCFS_week9.png)
 
   
-- FCFS
-     - Waiting Time    : 8,75
-     - Turnaround time : 14,75
+- SJF
+  ![Screenshot hasil](screenshots/Eksperimen_TabelManual_SJF_week9_3.png)
+     - Waiting Time    : 6,25
+     - Turnaround time : 12,25
+
+- Hasil Simulasi
+    ![Screenshot hasil](screenshots/Eksperimen_SJF_week9_2.png)
+  
   
 - Jelaskan kelebihan dan keterbatasan simulasi.
 ###  Kelebihan Simulasi
