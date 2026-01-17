@@ -1,0 +1,48 @@
+processes = ["P1", "P2", "P3"]
+
+allocation = {
+    "P1": "R1",
+    "P2": "R2",
+    "P3": "R3"
+}
+
+request = {
+    "P1": "R2",
+    "P2": "R3",
+    "P3": "R1"
+}
+
+# Resource -> Process
+resource_owner = {v: k for k, v in allocation.items()}
+
+# Membuat Wait-For Graph
+wait_for = {p: resource_owner[request[p]] for p in processes}
+
+# Cetak tabel Wait-For Graph
+print("TABEL WAIT-FOR GRAPH")
+print("-" * 40)
+print(f"{'Proses':<10}{'Menunggu Proses':<20}")
+print("-" * 40)
+for p, w in wait_for.items():
+    print(f"{p:<10}{w:<20}")
+print("-" * 40)
+
+# Deteksi siklus sederhana
+visited = []
+current = processes[0]
+
+while current not in visited:
+    visited.append(current)
+    current = wait_for[current]
+
+deadlock_processes = visited
+
+# Cetak tabel hasil deteksi
+print("\nTABEL HASIL DETEKSI DEADLOCK")
+print("-" * 40)
+print(f"{'Proses':<10}{'Status':<20}")
+print("-" * 40)
+for p in processes:
+    status = "Deadlock" if p in deadlock_processes else "Tidak Deadlock"
+    print(f"{p:<10}{status:<20}")
+print("-" * 40)
