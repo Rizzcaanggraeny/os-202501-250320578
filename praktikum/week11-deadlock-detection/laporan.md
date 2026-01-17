@@ -161,8 +161,7 @@ print("-" * 40)
 ---
 
 ## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/Eksperime_simulasi_deadlock_week_11.png)
 
 ---
 
