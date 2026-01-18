@@ -95,34 +95,97 @@ praktikum/week12-virtual-machine/
    git push origin main
    ```
 
-
----
-
-## Kode / Perintah
-Tuliskan potongan kode atau perintah utama:
-```bash
-uname -a
-lsmod | head
-dmesg | head
-```
-
 ---
 
 ## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+1. **Instalasi Virtual Machine**
+   - Instal VirtualBox atau VMware pada komputer host.
+     ![Screenshot hasil](screenshots/instalasi_VM_1.png)
+     ![Screenshot hasil](screenshots/instalasi_VM_2.png)
+     ![Screenshot hasil](screenshots/instalasi_VM_3.png)
+     
+   - Pastikan fitur virtualisasi (VT-x / AMD-V) aktif di BIOS.
+     ![Screenshot hasil](screenshots/vitur_firtualisasi_week12.png)
+
+2. **Pembuatan OS Guest**
+   - Buat VM baru dan pilih OS guest
+     ![Screenshot hasil](screenshots/pembuatan_OS_Guest_week12.png)
+
+3. **Instalasi Sistem Operasi**
+   - Jalankan proses instalasi OS guest sampai selesai.  
+   - Pastikan OS guest dapat login dan berjalan normal.
+   - Ubah konfigurasi CPU dan RAM.
+      ![Screenshot hasil](screenshots/instalasi_sistem_operasi_1.png)
+      ![Screenshot hasil](screenshots/instalasi_sistem_operasi_2.png)
+
+4. **Konfigurasi Resource**
+   - Amati perbedaan performa sebelum dan sesudah perubahan resource.
+      ![Screenshot hasil](screenshots/hasil_performa_resource_week12.png)
 
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+- Jelaskan bagaimana VM menyediakan isolasi antara host dan guest.
+- Virtual Machine (VM) menyediakan isolasi antara host dan guest melalui beberapa mekanisme teknis yang diimplementasikan
+  oleh hypervisor (seperti VirtualBox).
+  - Cara VM Mengisolasi Host dan Guest:
+    - Komputer Virtual yang Terpisah
+      VM seperti membuat "komputer di dalam komputer". Sistem guest mendapat CPU virtual, RAM virtual (lihat
+      `hasil_performa_resource_week12.png`: RAM 2-4 GB), dan penyimpanan virtual (25 GB) yang dialokasikan dari host tapi
+      berjalan terpisah.
+    - Disk Virtual yang Terisolasi
+      Saat instalasi Linux Mint, pilihan "Erase disk and install Linux Mint" hanya
+      menghapus disk virtual, bukan disk fisik host.
+    - Jaringan Terpisah
+      VirtualBox punya fitur VirtualBox Networking (`instalasi_VM_1.png`) yang membuat jaringan virtual, sehingga aktivitas
+      online guest tidak mengganggu jaringan host.
+    - Sistem File Terpisah
+      File di dalam VM disimpan sebagai file container (seperti .vdi) yang tidak bisa diakses langsung dari host tanpa
+      konfigurasi khusus.
+       
+- Kaitkan dengan konsep *sandboxing* dan *hardening* OS.
+  Virtual Machine (VM) secara langsung merealisasikan konsep sandboxing dengan berperan sebagai "sandbox" atau lingkungan
+  terkurung tingkat sistem operasi.
+  - VM sebagai Sandbox Tingkat Sistem Operasi
+    Lingkungan Terkurung Lengkap, VM bertindak seperti “kotak pasir” raksasa yang mengisolasi seluruh sistem operasi guest
+    beserta semua aplikasinya. Semua aktivitas—termasuk instalasi, konfigurasi, dan eksekusi kode—hanya berlaku di dalam
+    VM.
+  - Isolasi Penuh dari Host
+    Contoh: Saat memilih “Erase disk and install Linux Mint” (instalasi_sistem_operasi_1.png), yang terhapus hanya disk
+    virtual, bukan disk fisik host.
+  - Kontainmen Risiko
+    Jika terjadi infeksi malware, crash sistem, atau kesalahan konfigurasi di guest, dampaknya tidak menyebar ke host
+    karena dibatasi oleh hypervisor.
+
+  - VM Memungkinkan Hardening OS yang Aman dan Terukur
+    - Hardening Tanpa Risiko ke Host
+      Di dalam VM, pengguna dapat menerapkan langkah-langkah keamanan ketat seperti menonaktifkan layanan tidak perlu
+      (USB, Bluetooth, SSH dalam instalasi_sistem_operasi_2.png) atau mengaktifkan enkripsi home folder—tanpa takut
+      merusak atau mengunci sistem host.
+    - Lingkungan Pengujian untuk Kebijakan Keamanan
+      VM menyediakan tempat aman untuk menguji konfigurasi keamanan (firewall rules, kebijakan password, dll.) sebelum
+      diterapkan di sistem produksi.
+      Pemisahan Peran dan Akses
+    - Pengguna dalam VM (contoh: username dan password) memiliki hak akses terbatas hanya dalam lingkungan
+      virtual, memperkecil risiko eskalasi privilege ke host.
 
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+1. VM berhasil dibuat sebagai “komputer virtual” yang terpisah dan aman
+   Kita berhasil menginstal Linux Mint di dalam VirtualBox, dengan spesifikasi virtual sendiri (2 inti prosesor, 4 GB RAM,
+   dan 25 GB penyimpanan). Semua aktivitas di dalam VM mulai dari instalasi sistem sampai menjalankan aplikasi berjalan
+   dalam lingkungan yang terisolasi sepenuhnya, tidak mengganggu atau merusak komputer utama (host).
+2. VM menggabungkan dua konsep keamanan: isolasi (sandboxing) dan penguatan sistem (hardening)
+   VM berperan sebagai **kotak pasir** yang mengurung semua kegiatan guest OS. Di dalamnya, kita bisa **mengamankan sistem
+   tamu** dengan cara mematikan fitur tidak perlu (seperti Bluetooth atau USB), mengenkripsi folder, dan menggunakan
+   password kuat semua ini dilakukan tanpa takut merusak sistem host. Jadi, VM melindungi host dari guest, dan sekaligus
+   memungkinkan kita mengamankan guest dari dalam.
+3. VM memberikan solusi praktis untuk uji coba, pengembangan, dan keamanan sehari-hari
+   Dari hasil monitoring, VM terbukti stabil dan hemat resource. Kita bisa menjalankan berbagai OS, menguji aplikasi
+   (misalnya IDE Java), atau mensimulasikan lingkungan kerja semuanya dalam ruang terisolasi yang aman. Dengan fitur
+   snapshot dan manajemen yang mudah, virtualisasi menjadi alat yang sangat berguna baik untuk belajar, bekerja, maupun
+   menjaga keamanan sistem.
 
 ---
 
