@@ -1,0 +1,56 @@
+import time
+
+data = []
+BLOCK_MB = 10
+SAFE_LIMIT_MB = 256  # berhenti aman jika ada limit 256 MB
+
+def get_memory_limit_mb():
+    """
+    Jika container punya memory limit Docker, file ini akan berisi angka.
+    Jika TIDAK ada limit, nilainya sangat besar.
+    """
+    try:
+        with open("/sys/fs/cgroup/memory.max", "r") as f:
+            value = f.read().strip()
+            if value == "max":
+                return None
+            return int(value) / (1024 * 1024)
+    except:
+        return None
+
+def get_memory_usage_mb():
+    try:
+        with open("/sys/fs/cgroup/memory.current", "r") as f:
+            return int(f.read()) / (1024 * 1024)
+    except:
+        return 0
+
+mem_limit = get_memory_limit_mb()
+
+if mem_limit:
+    print(f"Memory limit terdeteksi: {mem_limit:.0f} MB")
+else:
+    print("Tidak ada memory limit Docker")
+
+i = 0
+while True:
+    # Bebani CPU
+    x = 0
+    for j in range(8_000_000):
+        x += j * j
+
+    # Alokasi memori bertahap
+    data.append("X" * (BLOCK_MB * 1024 * 1024))
+
+    mem_used = get_memory_usage_mb()
+    print(f"Iterasi {i} | Memori terpakai: {mem_used:.2f} MB")
+
+    # Hanya berhenti JIKA ADA LIMIT
+    if mem_limit and mem_used >= SAFE_LIMIT_MB:
+        print("Mendekati limit memori Docker → program berhenti normal")
+        break
+
+    i += 1
+    time.sleep(0.5)
+
+print("Program selesai")
