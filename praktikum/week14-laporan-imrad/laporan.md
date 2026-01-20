@@ -129,7 +129,7 @@ Langkah-langkah eksperimen yang dilakukan:
 | LRU       | 3            | 9          | 4        | 30.77%   |
 
 ### 3.4 Visualisasi Hasil
-
+![alt text](<screenshots/FIFO_LRU.png>)
 Berdasarkan data di atas, dapat diamati bahwa LRU menghasilkan *page fault* 10% lebih sedikit dibandingkan FIFO pada *reference string* yang digunakan. Hal ini menunjukkan bahwa LRU lebih efisien dalam memanfaatkan memori yang terbatas.
 
 ---
@@ -240,8 +240,10 @@ Bahkan dalam praktikum sederhana, kebiasaan mengutip sumber yang tepat membentuk
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+- Apa bagian yang paling menantang minggu ini?
+  - bagian paling menantang yaitu ketika harus membuat laporan dengan benar dan sesuai intruksi 
+- Bagaimana cara Anda mengatasinya?
+  - mencari referensi di website dan mencari beberapa bagian baru disusun
 
 ---
 
